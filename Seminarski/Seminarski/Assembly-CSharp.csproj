@@ -51,8 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\DetectedObstacle.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Kretanje.cs" />
+     <Compile Include="Assets\Scripts\UIScript.cs" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>C:/Users/Nikola Tomic/Documents/GitHub/DigitalneMultimedije/Seminarski/Seminarski/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
