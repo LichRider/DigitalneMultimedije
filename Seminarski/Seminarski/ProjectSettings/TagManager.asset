@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Zemlja
   - Igrac
+  - Coin
   layers:
   - Default
   - TransparentFX

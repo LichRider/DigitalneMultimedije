@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIScript : MonoBehaviour {
 
@@ -9,15 +10,12 @@ public class UIScript : MonoBehaviour {
     public Text poeni;
     public GameObject levelPanel;
     public GameObject deadPanel;
+    public GameObject startPanel;
+    public GameObject selectPanel;
     // Use this for initialization
     void Start() {
         zivoti.text = "Lives: 5";
         poeni.text = "Score: 0";
-    }
-
-    private void showPanel(GameObject panel)
-    {
-        levelPanel.SetActive(false);
     }
     public void setLives(int n)
     {
@@ -29,35 +27,41 @@ public class UIScript : MonoBehaviour {
         poeni.text = "Score: " + n;
     }
 
-    public void startLevel()
+    public void showPanel(GameObject panel)
+    {
+        startPanel.SetActive(false);
+        selectPanel.SetActive(false);
+        levelPanel.SetActive(false);
+        deadPanel.SetActive(false);
+
+        if (panel != null)
+            panel.SetActive(true);
+
+    }
+    public void StartPanel()
+    {
+        showPanel(startPanel);
+    }
+
+    public void SelectPanel()
+    {
+        showPanel(selectPanel);
+    }
+    public void StartLevel()
     {
         showPanel(levelPanel);
-        levelPanel.SetActive(true);
+        Debug.Log("Ovo radi");
     }
 
     public void dead()
     {
         showPanel(deadPanel);
-        deadPanel.SetActive(true);
     }
 
-    /*  public void Menu()
-      {
-          showPanel(menu);
-      }
+    /* 
 
-      putblic void SelectLevel()
-      {
-          showPanel(selectlevel);
-      }
-      public void Dead()
-      {
-          showPanel(dead);
-      }
-      public void ()
-      {
-          showPanel(dead);
-      }
+      
+ 
       // Update is called once per frame*/
     void Update () {
 		

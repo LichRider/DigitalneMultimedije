@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour {
 
@@ -15,25 +16,28 @@ public class GameManager : MonoBehaviour {
     }
     public static GameState gameState;
     public Kretanje kretanje;
+    public AudioScript audioScript;
     private int score;
     private int lives;
     public UIScript uiScript;
     // Use this for initialization
     void Start() {
-        startLevel();
         score = 0;
         lives = 5;
+        Menu();
+       
     }
 
     public void Menu()
     {
-        
         gameState = GameState.menu;
+        uiScript.StartPanel();
     }
     public void SelectLevel()
     {
         gameState = GameState.selectLevel;
-       // uiScript.selectLevel();
+        uiScript.SelectPanel();
+        
     }
     public void startLevel()
     {
@@ -41,8 +45,9 @@ public class GameManager : MonoBehaviour {
         gameState = GameState.startLevel;
         uiScript.setLives(lives);
         uiScript.setScore(score);
-        uiScript.startLevel();
+        uiScript.StartPanel();
         kretanje.Begin();
+ 
     }
     public void EndLevel()
     {
@@ -79,8 +84,13 @@ public class GameManager : MonoBehaviour {
                 score = 0;
             }
             else
+            {
                 score++;
+                audioScript.GetCoin();
+            }
         }
+        uiScript.setScore(score);
+        uiScript.setLives(lives);
     }
 
 	
